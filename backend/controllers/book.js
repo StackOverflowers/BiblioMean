@@ -25,3 +25,14 @@ const registerBook = async (req, res) => {
     return res.status(200).send({result});
 
 }
+
+const listBook = async (req, res) => {
+    const book = await Book.findOne({id_library:req.user.id_library});
+
+    if(!book) return res.status(400).send("Sorry No books on that library");
+
+    return res.status(200).send({book});
+}
+
+
+module.exports = {registerBook,listBook}
