@@ -27,7 +27,7 @@ const registerBook = async (req, res) => {
 }
 
 const listBook = async (req, res) => {
-    const book = await Book.findOne({id_library:req.user.id_library});
+    const book = await Book.findOne({id_library:req.body.id_library});
 
     if(!book) return res.status(400).send("Sorry No books on that library");
 
